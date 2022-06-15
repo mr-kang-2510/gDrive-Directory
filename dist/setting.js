@@ -1,15 +1,16 @@
 var authConfig = {
+  siteName: "Cloud Drive",
   version: "1.1.2",
   roots: [
     {
       id: "",
-      name: "TeamDrive1",
+      name: "TeamDrive",
       pass: "",
     },
     {
       id: "root",
       name: "PriveDrive",
-      pass: "",
+      pass: "123",
     },
     {
       id: "",

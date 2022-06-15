@@ -8,7 +8,7 @@ Combining the power of [Cloudflare Workers](https://workers.cloudflare.com/) and
 This theme's goindex is currently based on [yanzai/goindex](https://github.com/yanzai/goindex/).
 ## Demo  
 
-🚀 Go to: [https://chill.aicirou.workers.dev/](https://chill.aicirou.workers.dev/) 
+🚀 Go to: [https://gdrive.mrkang.workers.dev/](https://gdrive.mrkang.workers.dev/) 
 
 🛠 Quick Development: [here/](https://github.com/mr-kang-2510/gDrive-Directory/edit/main/README.md#quick-deployment)
 
