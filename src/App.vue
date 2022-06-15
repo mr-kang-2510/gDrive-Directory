@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="qwe123">
+  <div id="app">
     <Layout ref="layout" />
   </div>
 </template>

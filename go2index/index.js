@@ -1,12 +1,12 @@
 // =======Options START=======
-var  authConfig  =  {
-  siteName : "",  // site name
+var authConfig = {
+  siteName : "gDrive Directory",  // site name
   version : "1.1.2" ,  // program version
   theme: "acrou",
   // It is strongly recommended to use your own client_id and client_secret
-  client_id: "746239575955-oao9hkv614p8glrqpvuh5i8mqfoq145b.apps.googleusercontent.com", // Client id from Google Cloud Console
-    client_secret: "u5a1CSY5pNjdD2tGTU93TTnI",
-    refresh_token: "", // Authorize token
+  client_id: "202264815644.apps.googleusercontent.com",
+  client_secret: "X4Z3ca8xfWDb1Voo-F9a7ZxJ",
+  refresh_token: "", // Authorize token
   /*
    * Set multiple drives to be displayed; add multiple by format
    * [id]: Can be team disk id, subfolder id, or "root" (representing the root directory of personal disk);
@@ -56,7 +56,7 @@ var  authConfig  =  {
   search_result_list_page_size: 50,
 // Confirm that cors can be opened
   enable_cors_file_down: false,
-	/**
+  /**
 	    * The basic auth above already includes the function of global protection in the disk. Therefore, the password in the .password file is no longer authenticated by default;
 	    * If on the basis of global authentication, you still need to separately verify the password in the .password file for some directories, set this option to true;
 	    * [Note] If the password verification of the .password file is enabled, every time the directory is listed, the overhead of querying whether the .password file exists in the directory will be added.
@@ -70,17 +70,17 @@ var themeOptions = {
 //Optional default system language: en/zh-chs/zh-cht
   languages: "en",
   render: {
-		/**
+    /**
 		      * Whether to render the HEAD.md file
 		      * Render HEAD.md file
 		      */
     head_md: false,
-		/**
+    /**
 		      * Whether to render the README.md file
 		      * Render README.md file
 		      */
     readme_md: false,
-		/**
+    /**
 		      * Whether to render file/folder description
 		      * Render file/folder description or not
 		      */
@@ -91,14 +91,14 @@ var themeOptions = {
 	    * Video player options
 	    */
   video: {
-		/**
+    /**
 		      * Player api (if not specified, the default player will be used)
 		      * Player api(Use default player if not specified)
 		      */
     api: "",
     autoplay: true,
   },
-	/**
+  /**
 	    * Audio player options
 	    * Audio player options
 	    */
@@ -147,31 +147,10 @@ function html(current_drive_order = 0, model = {}) {
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/> 
-<link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/rOyuGjA.gif">
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-86099016-6">
-</script>
-<script>window.dataLayer=window.dataLayer || []; function gtag(){dataLayer.push(arguments);}gtag('js', new Date()); gtag('config', 'UA-86099016-6');</script>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MR47R4M');</script> 
-  <title>${authConfig.siteName}</title>
-  <style>
-    @import url(${themeOptions.cdn}@${themeOptions.version}/dist/style.min.css);
-  </style>
-  <script>
-    window.gdconfig = JSON.parse('${JSON.stringify({
-      version: authConfig.version,
-      themeOptions: themeOptions,
-    })}');
-    window.themeOptions = JSON.parse('${JSON.stringify(themeOptions)}');
-    window.gds = JSON.parse('${JSON.stringify(
-      authConfig.roots.map((it) => it.name)
-    )}');
-    window.MODEL = JSON.parse('${JSON.stringify(model)}');
-    window.current_drive_order = ${current_drive_order};
-  </script>
+<meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/> <title>${authConfig.siteName}</title> <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"><meta name="description" content="Combining the power of Cloudflare Workers and Google Drive will allow you to index your files on the browser on Cloudflare Workers."><meta name="theme-color" content="#FF3300"><meta name="application-name" content="goindex"><meta name="robots" content="index, follow"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://i.imgur.com/rOyuGjA.gif"><meta name="twitter:description" content="Combining the power of Cloudflare Workers and Google Drive will allow you to index your files on the browser on Cloudflare Workers."><meta name="keywords" content="goindex, google, drive, goindex, gdindex, classic, material, workers-script, oauth-consent-screen, google-drive, cloudflare-workers, themes"><meta name="twitter:title" content="Goindex"><meta name="twitter:url" content="https://github.com/alx-xlx/goindex"><link rel="shortcut icon" href="https://i.imgur.com/rOyuGjA.gif"><meta property="og:site_name" content="Goindex"><meta property="og:type" content="website"><meta property="og:image" content="https://i.imgur.com/rOyuGjA.gif"><meta property="og:description" content="Combining the power of Cloudflare Workers and Google Drive will allow you to index your files on the browser on Cloudflare Workers."><meta property="og:title" content="Goindex"><meta property="og:url" content="https://github.com/alx-xlx/goindex"><link rel="apple-touch-icon" href="https://i.imgur.com/rOyuGjA.gif"><link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/rOyuGjA.gif"><meta name="google-site-verification" content="OD_AXMYw-V6ID9xQUb2Wien9Yy8IJSyfBUyejYNB3CU"/><script async src="https://www.googletagmanager.com/gtag/js?id=UA-86099016-6"></script><script>window.dataLayer=window.dataLayer || []; function gtag(){dataLayer.push(arguments);}gtag('js', new Date()); gtag('config', 'UA-86099016-6');</script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MR47R4M');</script> <style>@import url(${themeOptions.cdn}@${themeOptions.version}/dist/style.min.css); </style> <script>window.gdconfig=JSON.parse('${JSON.stringify({version: authConfig.version, themeOptions: themeOptions,})}'); window.themeOptions=JSON.parse('${JSON.stringify(themeOptions)}'); window.gds=JSON.parse('${JSON.stringify( authConfig.roots.map((it)=> it.name) )}'); window.MODEL=JSON.parse('${JSON.stringify(model)}'); window.current_drive_order=${current_drive_order}; </script>
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MR47R4M"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="app"></div>
     <script src="${themeOptions.cdn}@${
     themeOptions.version
@@ -371,7 +350,7 @@ async function apiRequest(request, gd) {
   }
 }
 
-// process search
+// 处理 search
 async function handleSearch(request, gd) {
   const option = {
     status: 200,
@@ -726,7 +705,7 @@ class googleDrive {
     };
   }
 
-	/**
+  /**
 	    * Get the file object of the parent folder of this file or folder upwards one by one. Note: it will be slow! ! !
 	    * Up to find the root directory of the current gd object (root id)
 	    * Only consider a single upward chain.
