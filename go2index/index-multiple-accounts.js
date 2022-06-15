@@ -1,6 +1,6 @@
 // =======Options START=======
 var authConfig = {
-    siteName: "Goindex", // 网站名称
+    siteName: "", // 网站名称
     version: "1.1.2", // 程序版本
     theme: "acrou",
     // 强烈推荐使用自己的 client_id 和 client_secret
@@ -78,7 +78,7 @@ var authConfig = {
   var themeOptions = {
     cdn: "https://cdn.jsdelivr.net/gh/mr-kang-2510/gDrive-Directory",
     // 主题版本号
-    version: "1.0",
+    version: "1.0.0",
     //可选默认系统语言:en/zh-chs/zh-cht
     languages: "en",
     render: {

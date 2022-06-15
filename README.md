@@ -80,7 +80,7 @@ For more option, see APlayer [options](https://aplayer.js.org/#/home?id=options)
 
 ## Change log
 
-### v1.0
+### v1.0.0
 
 - Fix image file actions does not work
 - Fix misjudged file to image format

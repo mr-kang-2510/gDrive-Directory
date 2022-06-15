@@ -1,6 +1,6 @@
 // =======Options START=======
 var  authConfig  =  {
-  siteName : "Chillx",  // site name
+  siteName : "",  // site name
   version : "1.1.2" ,  // program version
   theme: "acrou",
   // It is strongly recommended to use your own client_id and client_secret
@@ -66,7 +66,7 @@ var  authConfig  =  {
 var themeOptions = {
   cdn: "https://cdn.jsdelivr.net/gh/mr-kang-2510/gDrive-Directory",
 // Theme version number
-  version: "1.0",
+  version: "1.0.0",
 //Optional default system language: en/zh-chs/zh-cht
   languages: "en",
   render: {
