@@ -78,7 +78,7 @@ var authConfig = {
   var themeOptions = {
     cdn: "https://cdn.jsdelivr.net/gh/mr-kang-2510/gDrive-Directory",
     // 主题版本号
-    version: "1.0.0",
+    version: "1.0.2",
     //可选默认系统语言:en/zh-chs/zh-cht
     languages: "en",
     render: {

@@ -1,7 +1,7 @@
 // =======Options START=======
 var authConfig = {
-  siteName : "gDrive Directory",  // site name
-  version : "1.1.2" ,  // program version
+  siteName: "gDrive Directory", // site name
+  version: "1.1.2", // program version
   theme: "acrou",
   // It is strongly recommended to use your own client_id and client_secret
   client_id: "202264815644.apps.googleusercontent.com",
@@ -20,8 +20,7 @@ var authConfig = {
    * No Basic Auth disk is needed, just keep user and pass empty at the same time. (It can be set directly without setting)
    * [Note] The search function is not supported for the disk whose id is set as the subfolder id (it does not affect other disks).
    */
-  roots: [
-    {
+  roots: [{
       id: "",
       name: "TeamDrive",
       pass: "",
@@ -40,80 +39,80 @@ var authConfig = {
     },
   ],
   default_gd: 0,
-	/**
-	    * The number displayed on each page of the file list page. [The recommended setting is between 100 and 1000];
-	    * If the setting is greater than 1000, it will cause an error when requesting drive api;
-	    * If the set value is too small, it will cause the incremental loading of the scroll bar of the file list page (paged loading) to fail;
-	    * Another effect of this value is that if the number of files in the directory is greater than this setting value (that is, multiple pages are required), the results of the first directory listing will be cached.
-	    */
+  /*
+   * The number displayed on each page of the file list page. [The recommended setting is between 100 and 1000];
+   * If the setting is greater than 1000, it will cause an error when requesting drive api;
+   * If the set value is too small, it will cause the incremental loading of the scroll bar of the file list page (paged loading) to fail;
+   * Another effect of this value is that if the number of files in the directory is greater than this setting value (that is, multiple pages are required), the results of the first directory listing will be cached.
+   */
   files_list_page_size: 50,
-	/**
-	    * The number displayed on each page of the search result page. [The recommended setting is between 50 and 1000];
-	    * If the setting is greater than 1000, it will cause an error when requesting drive api;
-	    * If the value set is too small, it will cause the incremental loading of the scroll bar of the search results page (paged loading) to fail;
-	    * The size of this value affects the response speed of search operations.
-	    */
+  /*
+   * The number displayed on each page of the search result page. [The recommended setting is between 50 and 1000];
+   * If the setting is greater than 1000, it will cause an error when requesting drive api;
+   * If the value set is too small, it will cause the incremental loading of the scroll bar of the search results page (paged loading) to fail;
+   * The size of this value affects the response speed of search operations.
+   */
   search_result_list_page_size: 50,
-// Confirm that cors can be opened
+  // Confirm that cors can be opened
   enable_cors_file_down: false,
-  /**
-	    * The basic auth above already includes the function of global protection in the disk. Therefore, the password in the .password file is no longer authenticated by default;
-	    * If on the basis of global authentication, you still need to separately verify the password in the .password file for some directories, set this option to true;
-	    * [Note] If the password verification of the .password file is enabled, every time the directory is listed, the overhead of querying whether the .password file exists in the directory will be added.
-	    */
+  /*
+   * The basic auth above already includes the function of global protection in the disk. Therefore, the password in the .password file is no longer authenticated by default;
+   * If on the basis of global authentication, you still need to separately verify the password in the .password file for some directories, set this option to true;
+   * [Note] If the password verification of the .password file is enabled, every time the directory is listed, the overhead of querying whether the .password file exists in the directory will be added.
+   */
   enable_password_file_verify: false,
 };
 var themeOptions = {
   cdn: "https://cdn.jsdelivr.net/gh/mr-kang-2510/gDrive-Directory",
-// Theme version number
-  version: "1.0.0",
-//Optional default system language: en/zh-chs/zh-cht
+  // Theme version number
+  version: "1.0.2",
+  //Optional default system language: en/zh-chs/zh-cht
   languages: "en",
   render: {
-    /**
-		      * Whether to render the HEAD.md file
-		      * Render HEAD.md file
-		      */
+    /*
+     * Whether to render the HEAD.md file
+     * Render HEAD.md file
+     */
     head_md: false,
-    /**
-		      * Whether to render the README.md file
-		      * Render README.md file
-		      */
+    /*
+     * Whether to render the README.md file
+     * Render README.md file
+     */
     readme_md: false,
-    /**
-		      * Whether to render file/folder description
-		      * Render file/folder description or not
-		      */
+    /*
+     * Whether to render file/folder description
+     * Render file/folder description or not
+     */
     desc: false,
   },
-	/**
-	    * Video player options
-	    * Video player options
-	    */
+  /*
+   * Video player options
+   * Video player options
+   */
   video: {
-    /**
-		      * Player api (if not specified, the default player will be used)
-		      * Player api(Use default player if not specified)
-		      */
+    /*
+     * Player api (if not specified, the default player will be used)
+     * Player api(Use default player if not specified)
+     */
     api: "",
     autoplay: true,
   },
-  /**
-	    * Audio player options
-	    * Audio player options
-	    */
+  /*
+   * Audio player options
+   * Audio player options
+   */
   audio: {},
 };
 // =======Options END=======
 
-/**
+/*
  * global functions
  */
 const FUNCS = {
-  /**
-	 * Converted into relatively safe search keywords for Google search lexicon
+  /*
+   * Converted into relatively safe search keywords for Google search lexicon
    */
-  formatSearchKeyword: function(keyword) {
+  formatSearchKeyword: function (keyword) {
     let nothing = "";
     let space = " ";
     if (!keyword) return nothing;
@@ -124,11 +123,11 @@ const FUNCS = {
   },
 };
 
-/**
+/*
  * global consts
  * @type {{folder_mime_type: string, default_file_fields: string, gd_root_type: {share_drive: number, user_drive: number, sub_folder: number}}}
  */
-const CONSTS = new (class {
+const CONSTS = new(class {
   default_file_fields =
     "parents,id,name,mimeType,modifiedTime,createdTime,fileExtension,size";
   gd_root_type = {
@@ -165,7 +164,7 @@ addEventListener("fetch", (event) => {
   event.respondWith(handleRequest(event.request));
 });
 
-/**
+/*
  * Fetch and log a request
  * @param {Request} request
  */
@@ -176,7 +175,7 @@ async function handleRequest(request) {
       await gd.init();
       gds.push(gd);
     }
-// This operation is parallel to improve efficiency
+    // This operation is parallel to improve efficiency
     let tasks = [];
     gds.forEach((gd) => {
       tasks.push(gd.initRootType());
@@ -186,30 +185,34 @@ async function handleRequest(request) {
     }
   }
 
-	// Extract drive order from path
-	   // and get the corresponding gd instance according to drive order
+  // Extract drive order from path
+  // and get the corresponding gd instance according to drive order
   let gd;
   let url = new URL(request.url);
   let path = decodeURI(url.pathname);
 
-  /**
-* Redirect to the start page
+  /*
+   * Redirect to the start page
    * @returns {Response}
    */
   function redirectToIndexPage() {
     return new Response("", {
       status: 301,
-      headers: { Location: `/${authConfig.default_gd}:/` },
+      headers: {
+        Location: `/${authConfig.default_gd}:/`
+      },
     });
   }
 
   if (path == "/") return redirectToIndexPage();
   if (path.toLowerCase() == "/favicon.ico") {
-// You can find a favicon later
-    return new Response("", { status: 404 });
+    // You can find a favicon later
+    return new Response("", {
+      status: 404
+    });
   }
 
-// Special command format
+  // Special command format
   const command_reg = /^\/(?<num>\d+):(?<command>[a-zA-Z0-9]+)(\/.*)?$/g;
   const match = command_reg.exec(path);
   let command;
@@ -222,26 +225,27 @@ async function handleRequest(request) {
       return redirectToIndexPage();
     }
     // basic auth
-    for (const r = gd.basicAuthResponse(request); r; ) return r;
+    for (const r = gd.basicAuthResponse(request); r;) return r;
     command = match.groups.command;
 
-// search for
+    // search for
     if (command === "search") {
       if (request.method === "POST") {
-// search results
+        // search results
         return handleSearch(request, gd);
       } else {
         const params = url.searchParams;
-// search page
+        // search page
         return new Response(
           html(gd.order, {
             q: params.get("q") || "",
             is_search_page: true,
             root_type: gd.root_type,
-          }),
-          {
+          }), {
             status: 200,
-            headers: { "Content-Type": "text/html; charset=utf-8" },
+            headers: {
+              "Content-Type": "text/html; charset=utf-8"
+            },
           }
         );
       }
@@ -251,9 +255,13 @@ async function handleRequest(request) {
       const params = url.searchParams;
       return gd.view(params.get("url"), request.headers.get("Range"));
     } else if (command !== "down" && request.method === "GET") {
-      return new Response(html(gd.order, { root_type: gd.root_type }), {
+      return new Response(html(gd.order, {
+        root_type: gd.root_type
+      }), {
         status: 200,
-        headers: { "Content-Type": "text/html; charset=utf-8" },
+        headers: {
+          "Content-Type": "text/html; charset=utf-8"
+        },
       });
     }
   }
@@ -261,7 +269,7 @@ async function handleRequest(request) {
   path = path.replace(reg, (p1, p2) => {
     return p2 + "/";
   });
-// Expected path format
+  // Expected path format
   const common_reg = /^\/\d+:\/.*$/g;
   try {
     if (!path.match(common_reg)) {
@@ -291,19 +299,25 @@ async function handleRequest(request) {
   if (path.substr(-1) == "/" || action != null) {
     return (
       basic_auth_res ||
-      new Response(html(gd.order, { root_type: gd.root_type }), {
+      new Response(html(gd.order, {
+        root_type: gd.root_type
+      }), {
         status: 200,
-        headers: { "Content-Type": "text/html; charset=utf-8" },
+        headers: {
+          "Content-Type": "text/html; charset=utf-8"
+        },
       })
     );
   } else {
     if (
       path
-        .split("/")
-        .pop()
-        .toLowerCase() == ".password"
+      .split("/")
+      .pop()
+      .toLowerCase() == ".password"
     ) {
-      return basic_auth_res || new Response("", { status: 404 });
+      return basic_auth_res || new Response("", {
+        status: 404
+      });
     }
     let file = await gd.file(path);
     let range = request.headers.get("Range");
@@ -318,13 +332,18 @@ async function apiRequest(request, gd) {
   let path = url.pathname;
   path = path.replace(gd.url_path_prefix, "") || "/";
 
-  let option = { status: 200, headers: { "Access-Control-Allow-Origin": "*" } };
+  let option = {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    }
+  };
 
   if (path.substr(-1) == "/") {
     let deferred_pass = gd.password(path);
     let body = await request.text();
     body = JSON.parse(body);
-// This can increase the speed when listing the directory for the first time. The disadvantage is that if the password verification fails, the overhead of listing directories will still be incurred
+    // This can increase the speed when listing the directory for the first time. The disadvantage is that if the password verification fails, the overhead of listing directories will still be incurred
     let deferred_list_result = gd.list(
       path,
       body.page_token,
@@ -354,7 +373,9 @@ async function apiRequest(request, gd) {
 async function handleSearch(request, gd) {
   const option = {
     status: 200,
-    headers: { "Access-Control-Allow-Origin": "*" },
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    },
   };
   let body = await request.text();
   body = JSON.parse(body);
@@ -366,8 +387,8 @@ async function handleSearch(request, gd) {
   return new Response(JSON.stringify(search_result), option);
 }
 
-/**
-* Process id2path
+/*
+ * Process id2path
  * @param request Require id parameter
  * @param gd
  * @returns {Promise<Response>} [Note] If the item represented by the id received from the front desk is not under the target gd disk, the response will return an empty string "" to the front desk
@@ -375,7 +396,9 @@ async function handleSearch(request, gd) {
 async function handleId2Path(request, gd) {
   const option = {
     status: 200,
-    headers: { "Access-Control-Allow-Origin": "*" },
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    },
   };
   let body = await request.text();
   body = JSON.parse(body);
@@ -408,21 +431,21 @@ class googleDrive {
     // this.init();
   }
 
-  /**
+  /*
    * Initial authorization; then get user_drive_real_root_id
    * @returns {Promise<void>}
    */
   async init() {
     await this.accessToken();
-		/*await (async () => {
-		             // Only get 1 time
-		             if (authConfig.user_drive_real_root_id) return;
-		             const root_obj = await (gds[0] || this).findItemById('root');
-		             if (root_obj && root_obj.id) {
-		                 authConfig.user_drive_real_root_id = root_obj.id
-		             }
-		         })();*/
-		     // Wait for user_drive_real_root_id, only get it once
+    /*await (async () => {
+                 // Only get 1 time
+                 if (authConfig.user_drive_real_root_id) return;
+                 const root_obj = await (gds[0] || this).findItemById('root');
+                 if (root_obj && root_obj.id) {
+                     authConfig.user_drive_real_root_id = root_obj.id
+                 }
+             })();*/
+    // Wait for user_drive_real_root_id, only get it once
     if (authConfig.user_drive_real_root_id) return;
     const root_obj = await (gds[0] || this).findItemById("root");
     if (root_obj && root_obj.id) {
@@ -430,7 +453,7 @@ class googleDrive {
     }
   }
 
-  /**
+  /*
    * Get the root directory type, set to root_type
    * @returns {Promise<void>}
    */
@@ -445,7 +468,7 @@ class googleDrive {
     }
   }
 
-  /**
+  /*
    * Returns a response that requires authorization, or null
    * @param request
    * @returns {Response|null}
@@ -477,7 +500,9 @@ class googleDrive {
     let requestOption = await this.requestOption();
     requestOption.headers["Range"] = range;
     let res = await fetch(url, requestOption);
-    const { headers } = (res = new Response(res.body, res));
+    const {
+      headers
+    } = (res = new Response(res.body, res));
     this.authConfig.enable_cors_file_down &&
       headers.append("Access-Control-Allow-Origin", "*");
     inline === true && headers.set("Content-Disposition", "inline");
@@ -489,7 +514,9 @@ class googleDrive {
     let requestOption = await this.requestOption();
     requestOption.headers["Range"] = range;
     let res = await fetch(url, requestOption);
-    const { headers } = (res = new Response(res.body, res));
+    const {
+      headers
+    } = (res = new Response(res.body, res));
     this.authConfig.enable_cors_file_down &&
       headers.append("Access-Control-Allow-Origin", "*");
     inline === true && headers.set("Content-Disposition", "inline");
@@ -512,7 +539,10 @@ class googleDrive {
     let parent = await this.findPathId(dir);
     // console.log(parent);
     let url = "https://www.googleapis.com/drive/v3/files";
-    let params = { includeItemsFromAllDrives: true, supportsAllDrives: true };
+    let params = {
+      includeItemsFromAllDrives: true,
+      supportsAllDrives: true
+    };
     params.q = `'${parent}' in parents and name = '${name}' and trashed = false`;
     params.fields =
       "files(id, name, mimeType, size ,createdTime, modifiedTime, iconLink, thumbnailLink)";
@@ -524,7 +554,7 @@ class googleDrive {
     return obj.files[0];
   }
 
-// Cache through reqeust cache
+  // Cache through reqeust cache
   async list(path, page_token = null, page_index = 0) {
     if (this.path_children_cache == undefined) {
       // { <path> :[ {nextPageToken:'',data:{}}, {nextPageToken:'',data:{}} ...], ...}
@@ -568,7 +598,10 @@ class googleDrive {
       return null;
     }
     let obj;
-    let params = { includeItemsFromAllDrives: true, supportsAllDrives: true };
+    let params = {
+      includeItemsFromAllDrives: true,
+      supportsAllDrives: true
+    };
     params.q = `'${parent}' in parents and trashed = false AND name !='.password'`;
     params.orderBy = "folder,name,modifiedTime desc";
     params.fields =
@@ -624,7 +657,7 @@ class googleDrive {
     return this.passwords[path];
   }
 
-  /**
+  /*
    * Get share drive information by id
    * @param any_id
    * @returns {Promise<null|{id}|any>} Any abnormal situation returns null
@@ -642,7 +675,7 @@ class googleDrive {
     return null;
   }
 
-  /**
+  /*
    * search for
    * @returns {Promise<{data: null, nextPageToken: null, curPageIndex: number}>}
    */
@@ -705,16 +738,16 @@ class googleDrive {
     };
   }
 
-  /**
-	    * Get the file object of the parent folder of this file or folder upwards one by one. Note: it will be slow! ! !
-	    * Up to find the root directory of the current gd object (root id)
-	    * Only consider a single upward chain.
-	    * [Note] If the item represented by this id is not under the target gd disk, then this function will return null
-	    *
-	    * @param child_id
-	    * @param contain_myself
-	    * @returns {Promise<[]>}
-	    */
+  /*
+   * Get the file object of the parent folder of this file or folder upwards one by one. Note: it will be slow! ! !
+   * Up to find the root directory of the current gd object (root id)
+   * Only consider a single upward chain.
+   * [Note] If the item represented by this id is not under the target gd disk, then this function will return null
+   *
+   * @param child_id
+   * @param contain_myself
+   * @returns {Promise<[]>}
+   */
   async findParentFilesRecursion(child_id, contain_myself = true) {
     const gd = this;
     const gd_root_id = gd.root.id;
@@ -760,7 +793,7 @@ class googleDrive {
     return meet_top ? parent_files : null;
   }
 
-  /**
+  /*
    * Get the path relative to the root directory of the disk
    * @param child_id
    * @returns {Promise<string>} [Note] If the item represented by this id is not in the target gd disk, then this method will return an empty string ""
@@ -781,12 +814,15 @@ class googleDrive {
       let path =
         "/" +
         p_files
-          .slice(idx)
-          .map((it) => it.name)
-          .reverse()
-          .join("/");
+        .slice(idx)
+        .map((it) => it.name)
+        .reverse()
+        .join("/");
       if (is_folder) path += "/";
-      cache.push({ id: p_files[idx].id, path: path });
+      cache.push({
+        id: p_files[idx].id,
+        path: path
+      });
     });
 
     cache.forEach((obj) => {
@@ -844,7 +880,10 @@ class googleDrive {
     }
 
     let url = "https://www.googleapis.com/drive/v3/files";
-    let params = { includeItemsFromAllDrives: true, supportsAllDrives: true };
+    let params = {
+      includeItemsFromAllDrives: true,
+      supportsAllDrives: true
+    };
     params.q = `'${parent}' in parents and mimeType = 'application/vnd.google-apps.folder' and name = '${name}'  and trashed = false`;
     params.fields = "nextPageToken, files(id, name, mimeType)";
     url += "?" + this.enQuery(params);
@@ -911,7 +950,10 @@ class googleDrive {
   async requestOption(headers = {}, method = "GET") {
     const accessToken = await this.accessToken();
     headers["authorization"] = "Bearer " + accessToken;
-    return { method: method, headers: headers };
+    return {
+      method: method,
+      headers: headers
+    };
   }
 
   enQuery(data) {
@@ -923,9 +965,9 @@ class googleDrive {
   }
 
   sleep(ms) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       let i = 0;
-      setTimeout(function() {
+      setTimeout(function () {
         console.log("sleep" + ms);
         i++;
         if (i >= 2) reject(new Error("i>=2"));
@@ -935,7 +977,7 @@ class googleDrive {
   }
 }
 
-String.prototype.trim = function(char) {
+String.prototype.trim = function (char) {
   if (char) {
     return this.replace(
       new RegExp("^\\" + char + "+|\\" + char + "+$", "g"),
