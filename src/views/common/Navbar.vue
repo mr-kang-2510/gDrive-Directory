@@ -85,7 +85,7 @@ export default {
     ViewMode,
   },
   created() {
-    // this.siteName = document.getElementsByTagName("title")[0].innerText;
+    this.siteName = document.getElementsByTagName("title")[0].innerText;
     if (window.gds && window.gds.length > 0) {
       this.gds = window.gds.map((item, index) => {
         return {

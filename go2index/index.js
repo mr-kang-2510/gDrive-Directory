@@ -65,7 +65,7 @@ var authConfig = {
 var themeOptions = {
   cdn: "https://cdn.jsdelivr.net/gh/mr-kang-2510/gDrive-Directory",
   // Theme version number
-  version: "1.0.2",
+  version: "1.0.3",
   //Optional default system language: en/zh-chs/zh-cht
   languages: "en",
   render: {
