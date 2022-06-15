@@ -1,6 +1,6 @@
 {
   "name": "gDrive-Directory",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "g2index": "1.1.2",
   "scripts": {
     "serve": "vue-cli-service serve",

@@ -39,33 +39,33 @@ var authConfig = {
     },
   ],
   default_gd: 0,
-  /*
-   * The number displayed on each page of the file list page. [The recommended setting is between 100 and 1000];
-   * If the setting is greater than 1000, it will cause an error when requesting drive api;
-   * If the set value is too small, it will cause the incremental loading of the scroll bar of the file list page (paged loading) to fail;
-   * Another effect of this value is that if the number of files in the directory is greater than this setting value (that is, multiple pages are required), the results of the first directory listing will be cached.
+  /**
+   * 文件列表页面每页显示的数量。【推荐设置值为 100 到 1000 之间】；
+   * 如果设置大于1000，会导致请求 drive api 时出错；
+   * 如果设置的值过小，会导致文件列表页面滚动条增量加载（分页加载）失效；
+   * 此值的另一个作用是，如果目录内文件数大于此设置值（即需要多页展示的），将会对首次列目录结果进行缓存。
    */
   files_list_page_size: 50,
-  /*
-   * The number displayed on each page of the search result page. [The recommended setting is between 50 and 1000];
-   * If the setting is greater than 1000, it will cause an error when requesting drive api;
-   * If the value set is too small, it will cause the incremental loading of the scroll bar of the search results page (paged loading) to fail;
-   * The size of this value affects the response speed of search operations.
+  /**
+   * 搜索结果页面每页显示的数量。【推荐设置值为 50 到 1000 之间】；
+   * 如果设置大于1000，会导致请求 drive api 时出错；
+   * 如果设置的值过小，会导致搜索结果页面滚动条增量加载（分页加载）失效；
+   * 此值的大小影响搜索操作的响应速度。
    */
   search_result_list_page_size: 50,
-  // Confirm that cors can be opened
+  // 确认有 cors 用途的可以开启
   enable_cors_file_down: false,
-  /*
-   * The basic auth above already includes the function of global protection in the disk. Therefore, the password in the .password file is no longer authenticated by default;
-   * If on the basis of global authentication, you still need to separately verify the password in the .password file for some directories, set this option to true;
-   * [Note] If the password verification of the .password file is enabled, every time the directory is listed, the overhead of querying whether the .password file exists in the directory will be added.
+  /**
+   * 上面的 basic auth 已经包含了盘内全局保护的功能。所以默认不再去认证 .password 文件内的密码;
+   * 如果在全局认证的基础上，仍需要给某些目录单独进行 .password 文件内的密码验证的话，将此选项设置为 true;
+   * 【注意】如果开启了 .password 文件密码验证，每次列目录都会额外增加查询目录内 .password 文件是否存在的开销。
    */
   enable_password_file_verify: false,
 };
 var themeOptions = {
   cdn: "https://cdn.jsdelivr.net/gh/mr-kang-2510/gDrive-Directory",
   // Theme version number
-  version: "1.0.3",
+  version: "1.0.4",
   //Optional default system language: en/zh-chs/zh-cht
   languages: "en",
   render: {
