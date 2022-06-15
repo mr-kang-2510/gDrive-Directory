@@ -112,17 +112,17 @@ module.exports = {
 
   devServer: {
     publicPath,
-    public: '0.0.0.0:8080'
-    // proxy: {
-    //   "/api": {
-    //     target: "https://ossdev.achirou.workers.dev/",
-    //     ws: true,
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //       "^/api": "",
-    //     },
-    //   },
-    // },
+    // public: '0.0.0.0:8080'
+    proxy: {
+      "/api": {
+        target: "https://gdrive.mrkang.workers.dev/",
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api": "",
+        },
+      },
+    },
   },
 
   pluginOptions: {

@@ -1,6 +1,6 @@
 
 
-# 🍿[Google-Drive-Directory-Index](https://github.com/mr-kang-2510/gDrive-Directory)
+# 🍿[Google Drive Directory](https://github.com/mr-kang-2510/gDrive-Directory)
 Combining the power of [Cloudflare Workers](https://workers.cloudflare.com/) and [Google Drive](https://www.google.com/drive/) will allow you to index your Google Drive files on the browser.    
 
 [go2index/index.js](https://github.com/mr-kang-2510/gDrive-Directory/blob/main/go2index/index.js) is the content of the Workers script.  
@@ -35,7 +35,7 @@ This theme's goindex is currently based on [yanzai/goindex](https://github.com/y
 
 1. Open the following link
 
-- https://goindex-builder-acrou.glitch.me
+- https://gg-drive-directory-build.glitch.me/
 
 2. Auth and get the code
 3. Deploy the code to [Cloudflare Workers](https://www.cloudflare.com/)
@@ -80,7 +80,7 @@ For more option, see APlayer [options](https://aplayer.js.org/#/home?id=options)
 
 ## Change log
 
-### v2.0.8
+### v1.0
 
 - Fix image file actions does not work
 - Fix misjudged file to image format
@@ -131,5 +131,4 @@ For more option, see APlayer [options](https://aplayer.js.org/#/home?id=options)
 
 [MIT](LICENSE)
 
-# gDrive-Directory
 # gDrive-Directory
